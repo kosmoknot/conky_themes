@@ -1,0 +1,94 @@
+background no
+font Sans:size=8
+#xftfont Sans:size=10
+use_xft yes
+xftalpha 0.9
+update_interval 1
+total_run_times 0
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 1940 2055
+maximum_width 180
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color 999
+default_shade_color black
+default_outline_color green
+alignment top_right
+gap_x 20
+gap_y 200
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+uppercase yes # set to yes if you want all text to be in uppercase
+
+own_window_argb_value 0
+own_window_argb_visual no
+own_window_colour 000000
+TEXT
+#${color 999}SYSTEM ${hr 1}${color}
+#
+#${color 999}Hostname : $alignr$nodename${color}
+${color 999}Kernel : $alignr$kernel${color}
+#${color 999}BITS : $alignr$machine 
+${color 999}Uptime : $alignr$uptime${color}
+#${color 999}Temperature: ${alignr} ${color} ${if_match ${exec sensors | grep -m 1 temp1 | awk '{print $2}' | cut -c 2-3}>=65}${exec sensors | grep -m 1 temp1 | awk '{print $2}'  cut -c 2-3}${else}${color}${exec sensors | grep -m 1 temp1 | awk '{print $2}' | cut -c 2-3}${endif} C° 
+
+#${color 999}Processore ${hr 1}${color}
+#
+${color 999}CPU Frequency : ${alignr}${freq} MHz
+#${color 999}Processes :$processes   ${alignr}${color 999}($running_processes active)
+#
+${color 999}CPU utilization :  ${alignr}${color 999}${cpu}%
+${color 999}${cpubar 20,180 }
+${color 999}${cpugraph  20,180 }
+#
+#${color 999}Memory${hr 1}${color}
+#
+${color 999}Ram :${alignr}$mem / $memmax ($memperc%)
+${membar 15}
+${color 999}swap :${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 15}
+#
+#${color 999}Processes ${hr 1}${color}
+
+Process $alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+${top name 4}$alignr${top cpu 4}${top mem 4}
+${top name 5}$alignr${top cpu 5}${top mem 5}
+
+#${color 999}Filesystem ${hr 1}${color}
+#
+#Home ${fs_used /home}/${fs_size /home} 
+#${fs_bar 15,120 /home} 
+#Root ${fs_used /}/${fs_size /} 
+#${fs_bar 15,120 /}
+#Local ${fs_used /usr/local}/${fs_size /usr/local} 
+#${fs_bar 15,120 /usr/local}
+${color 999}WIFI${hr 1}${color}
+
+Down ${downspeed wlp2s0} /s ${alignr}Up ${upspeed wlp2s0} /s
+${downspeedgraph wlp2s0 20,85} ${alignr}${upspeedgraph wlp2s0 20,85}
+Total ${totaldown wlp2s0} ${alignr}Total ${totalup wlp2s0}
+
+${color 999}ETHERNET${hr 1}${color}
+
+Down ${downspeed ipv6leakintrf0} /s ${alignr}Up ${upspeed ipv6leakintrf0} /s
+${downspeedgraph ipv6leakintrf0 20,85} ${alignr}${upspeedgraph ipv6leakintrf0 20,85}
+Total ${totaldown ipv6leakintrf0} ${alignr}Total ${totalup ipv6leakintrf0}
+
+${color 999}USB Tether${hr 1}${color}
+
+Down ${downspeed usb0} /s ${alignr}Up ${upspeed usb0} /s
+${downspeedgraph usb0 20,85} ${alignr}${upspeedgraph usb0 20,85}
+Total ${totaldown usb0} ${alignr}Total ${totalup usb
+
+
